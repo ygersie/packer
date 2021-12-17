@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd /srv/salt
+
+[[ -f /etc/profile.d/python-venv.sh ]] || { echo "python venv profile missing"; exit 1; }
+. /etc/profile.d/python-venv.sh
+
+workon salt
+
+salt-call state.apply 2>&1 | grep -v 'Unable to connect pusher'
