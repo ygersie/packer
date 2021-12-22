@@ -9,4 +9,4 @@ cd /srv/salt
 
 workon salt
 
-salt-call --force-color state.apply 2>&1 | grep -v 'Unable to connect pusher'
+salt-call --force-color state.apply 2>&1 | grep -v 'Event module not available'
