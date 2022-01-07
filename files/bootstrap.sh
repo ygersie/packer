@@ -21,6 +21,9 @@ log "Cloning salt repo"
 git clone https://github.com/ygersie/salt.git /srv/salt
 chmod 750 /srv/salt
 
+log "Disable cron to prevent automatic salt runs"
+systemctl stop cron.service
+
 log "Calling salt-apply"
 count=1
 while [[ ${count} -le 3 ]]; do
